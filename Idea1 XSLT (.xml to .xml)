@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    exclude-result-prefixes="xs"
+    version="2.0">
+    <?xslt inPathSegment="\010_manannot\"?>
+    <xsl:output method="xml"/>
+        <xsl:template match="/">
+            <featureValueObservation>
+                <xsl:attribute name="placeName">
+                    <xsl:apply-templates select="text/body/div/featureValueObservation/placeName"></xsl:apply-templates>
+                </xsl:attribute>
+                <xsl:attribute name="language">
+                    <xsl:value-of select="featureValueObservation/lang"/>
+                </xsl:attribute>
+                <xsl:attribute name="tribe">
+                    <xsl:value-of select="featureValueObservation/personGrp"/>
+                    <xsl:value-of select="role/tribe"/>
+                </xsl:attribute>
+            </featureValueObservation>
+        </xsl:template>
+</xsl:stylesheet>
